@@ -20,7 +20,7 @@ routes.post("/upload", multer(multerConfig).single("file"), async (req, res)=>{
     return res.json(data)
 });
 
-routes.get("/alldata",async (req, res)=>{
+routes.get("/",async (req, res)=>{
 
     try {
     const data = await historicPrice.find()
