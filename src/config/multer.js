@@ -12,7 +12,7 @@ module.exports = {
         filename:  (req, file, callback) =>{
             crypto.randomBytes(4, (err, hash) => {
                 if (err) callback(err);
-                
+
                 // NAME WITH HASH
                 // const filename = `${hash.toString('hex')}-${file.originalname}`
                 const filename = `IPCFeso.csv`
@@ -27,7 +27,7 @@ module.exports = {
     },
     fileFilter: (req, file, callback)=>{
         const allowedMimes = [
-            'text/csv'
+            'text/csv', 'application/vnd.ms-excel'
         ];
 
         if (allowedMimes.includes(file.mimetype)) {

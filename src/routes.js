@@ -11,7 +11,8 @@ const {historicPrice} = require("./models/historicalDataSchema");
 routes.post("/upload", multer(multerConfig).single("file"), async (req, res)=>{
 
     var data = csvParser.toJson(req.file.path)
-    
+
+
     if (data){
         await historicPrice.deleteMany({})
         const result = await historicPrice.insertMany(data)
@@ -44,8 +45,8 @@ routes.get("/value",async (req, res)=>{
 
     const value = await historicPrice.findOne({
         $and: [
-            {date: realDate}, 
-            {"products.name": productFilter}] 
+            {date: realDate},
+            {"products.name": productFilter}]
         },
         {'products.$': 1})
 
@@ -66,14 +67,14 @@ routes.get("/inflation", async (req, res)=>{
 
 
     const initialValue = await historicPrice.findOne({
-        $and: [{date:initialDate}, 
-            {"products.name": productFilter}] 
+        $and: [{date:initialDate},
+            {"products.name": productFilter}]
         },
         {id:1, date:1,'products.$': 1})
 
     const finalValue = await historicPrice.findOne({
-        $and: [{date:finalDate}, 
-            {"products.name": productFilter}] 
+        $and: [{date:finalDate},
+            {"products.name": productFilter}]
         },
         {dateFilter:1,'products.$': 1})
 
@@ -85,10 +86,10 @@ routes.get("/inflation", async (req, res)=>{
     return res.json({inflation: inflation})
 })
 
-    
+
 routes.get("/download", (req, res) => {
         const filename = "D:/Nuvem/Educacao/Programacao/Projetos/inflato/backend/uploads/IPCFeso.csv";
-        
+
         res.download(filename, 'IPCFeso.csv');
       })
 
