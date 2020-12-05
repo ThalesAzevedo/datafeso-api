@@ -23,7 +23,7 @@ var toJson = function toJson(path) {
         
         id ++
         var date = csvCells[i][0].split('/')
-        var realDate = Date.UTC(parseInt(date[1]),parseInt(date[0])-1)? Date.UTC(parseInt(date[1]),parseInt(date[0])-1):0
+        var realDate = Date.UTC(parseInt(date[1]),parseInt(date[0]))? Date.UTC(parseInt(date[1]),parseInt(date[0])):0
 
         jsonData.push({
             dataCollection: id,
