@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
   dataCollection: Number,
-  date: Date,
+  date: String,
   createdAt: {type:Date, default: Date.now},
   products: [
     { name: String ,
