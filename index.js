@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_DB, {
     useUnifiedTopology: true,
     useCreateIndex: true,
     }
-) 
+)
 
 app.use(express.json());
 
@@ -22,9 +22,9 @@ app.use(cors());
 app.options('*', cors());
 
 
-app.use(require("./routes"));
+app.use(require("./src/routes"));
 app.use(express.urlencoded({extended:true}));
 
-app.use(express.static('uploads'));
+// app.use('/download', express.static('./uploads'));
 
 app.listen(process.env.PORT, ()=> {console.log("DB Connected on port 3333")});
