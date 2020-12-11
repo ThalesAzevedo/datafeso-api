@@ -34,7 +34,6 @@ routes.get("/",async (req, res)=>{
   }
 })
 
-
 routes.get("/value",async (req, res)=>{
 
   productFilter = req.body.product
